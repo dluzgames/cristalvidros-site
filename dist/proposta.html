@@ -1,0 +1,505 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Diagnóstico, Exemplos e Catálogo de Valores — Cristal Vidros | DLuz Digital</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@600;700&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --ink: #0f172a;
+      --muted: #475569;
+      --line: #cbd5e1;
+      --bg: #f8fafc;
+      --card: #ffffff;
+      --blue: #0284c7;
+      --navy: #091529;
+      --green: #059669;
+      --amber: #b45309;
+      --red: #b91c1c;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      background: #e2e8f0;
+      color: var(--ink);
+      font-family: 'Inter', system-ui, sans-serif;
+      font-size: 14px;
+      line-height: 1.5;
+    }
+    .toolbar {
+      position: sticky;
+      top: 0;
+      z-index: 30;
+      background: var(--navy);
+      color: #fff;
+      padding: 10px 20px;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+      box-shadow: 0 4px 16px rgba(2, 6, 23, 0.25);
+    }
+    .toolbar .brand { font-family: 'Space Grotesk', sans-serif; font-weight: 700; font-size: 15px; }
+    .toolbar .brand span { color: #38bdf8; }
+    .toolbar .actions { display: flex; flex-wrap: wrap; gap: 8px; }
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 8px 14px;
+      border-radius: 8px;
+      font-size: 12.5px;
+      font-weight: 600;
+      text-decoration: none;
+      cursor: pointer;
+      border: 1px solid rgba(255,255,255,0.2);
+      color: #fff;
+      background: rgba(255,255,255,0.08);
+    }
+    .btn.primary { background: #0ea5e9; border-color: #0ea5e9; color: #04101f; }
+    .btn.whats { background: #10b981; border-color: #10b981; color: #041e13; }
+
+    .page {
+      max-width: 960px;
+      margin: 24px auto;
+      background: var(--card);
+      border-radius: 14px;
+      box-shadow: 0 18px 45px rgba(15, 23, 42, 0.12);
+      overflow: hidden;
+    }
+    .doc-header {
+      background: linear-gradient(135deg, #061224, #0f2547);
+      color: #fff;
+      padding: 28px 34px;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: flex-end;
+      gap: 16px;
+      border-bottom: 4px solid #38bdf8;
+    }
+    .doc-header h1 {
+      margin: 6px 0 4px;
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 24px;
+      line-height: 1.15;
+    }
+    .doc-header .eyebrow {
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+      color: #7dd3fc;
+      font-weight: 700;
+    }
+    .doc-header .meta {
+      text-align: right;
+      font-size: 12px;
+      color: #cbd5e1;
+    }
+    .doc-header .meta strong { color: #fff; font-size: 14px; display: block; }
+
+    .section {
+      padding: 24px 34px;
+      border-bottom: 1px solid #e2e8f0;
+    }
+    .section:last-child { border-bottom: 0; }
+    h2 {
+      margin: 0 0 6px;
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 18px;
+      color: var(--navy);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .sub { margin: 0 0 16px; color: var(--muted); font-size: 13px; }
+
+    .grid-2 { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px; }
+    .grid-3 { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; }
+    @media (max-width: 720px) {
+      .grid-2, .grid-3 { grid-template-columns: 1fr; }
+      .section { padding: 18px 18px; }
+      .doc-header { padding: 20px 18px; }
+      .doc-header .meta { text-align: left; }
+    }
+
+    .card {
+      border: 1px solid var(--line);
+      border-radius: 10px;
+      padding: 14px 16px;
+      background: var(--bg);
+    }
+    .card.good { border-color: #a7f3d0; background: #ecfdf5; }
+    .card.warn { border-color: #fecaca; background: #fef2f2; }
+    .card.rec  { border-color: #38bdf8; background: #f0f9ff; border-width: 2px; }
+
+    .card h3 { margin: 0 0 6px; font-size: 14px; font-family: 'Space Grotesk', sans-serif; }
+    .badge {
+      display: inline-block;
+      font-size: 10.5px;
+      font-weight: 700;
+      padding: 2px 8px;
+      border-radius: 99px;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    .badge.red { background: #fee2e2; color: #991b1b; }
+    .badge.green { background: #d1fae5; color: #065f46; }
+    .badge.blue { background: #e0f2fe; color: #075985; }
+
+    ul.clean { margin: 8px 0 0; padding-left: 18px; font-size: 12.8px; color: #334155; }
+    ul.clean li { margin-bottom: 5px; }
+
+    /* Highlight Summary Strip */
+    .pkg-card {
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      padding: 16px;
+      background: #fff;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+    .pkg-card.featured {
+      border: 2px solid #0284c7;
+      background: linear-gradient(180deg, #f0f9ff 0%, #ffffff 40%);
+      box-shadow: 0 10px 25px rgba(2, 132, 199, 0.12);
+    }
+    .price-boxes {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 8px;
+      margin: 10px 0;
+    }
+    .pbox {
+      border-radius: 8px;
+      padding: 8px 10px;
+      background: #f1f5f9;
+      border: 1px solid #e2e8f0;
+    }
+    .pbox.hi { background: #091529; color: #fff; border-color: #091529; }
+    .pbox span { display: block; font-size: 10.5px; opacity: 0.8; }
+    .pbox b { font-size: 16px; font-family: 'Space Grotesk', sans-serif; }
+    .save-tag {
+      font-size: 11.5px;
+      font-weight: 600;
+      color: var(--green);
+      background: #ecfdf5;
+      border: 1px solid #a7f3d0;
+      border-radius: 6px;
+      padding: 4px 8px;
+      margin-bottom: 8px;
+    }
+
+    /* Tables */
+    table { width: 100%; border-collapse: collapse; font-size: 12.6px; margin-top: 8px; }
+    th, td { padding: 8px 10px; border-bottom: 1px solid #e2e8f0; text-align: left; }
+    th { background: #f1f5f9; font-size: 11.5px; text-transform: uppercase; letter-spacing: 0.04em; color: #334155; }
+    td.num, th.num { text-align: right; white-space: nowrap; font-weight: 600; }
+    td small { display: block; color: #64748b; font-weight: 400; font-size: 11.5px; }
+
+    /* Visual Samples */
+    .sample-box {
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      overflow: hidden;
+      background: #fff;
+    }
+    .sample-box img {
+      width: 100%;
+      height: 310px;
+      object-fit: cover;
+      object-position: top;
+      display: block;
+      background: #091529;
+    }
+    .sample-box .cap {
+      padding: 12px 14px;
+      font-size: 12.5px;
+    }
+
+    .script-box {
+      background: #091529;
+      color: #e2e8f0;
+      border-radius: 10px;
+      padding: 14px 16px;
+      font-size: 12.5px;
+      line-height: 1.55;
+    }
+    .script-box strong { color: #38bdf8; }
+
+    .doc-footer {
+      background: #f1f5f9;
+      padding: 16px 34px;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 10px;
+      font-size: 12px;
+      color: #475569;
+    }
+
+    @media print {
+      body { background: #fff; }
+      .toolbar { display: none !important; }
+      .page { margin: 0; box-shadow: none; border-radius: 0; max-width: 100%; }
+      .section { break-inside: avoid; }
+      .pkg-card, .sample-box { break-inside: avoid; }
+      @page { size: A4; margin: 8mm; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="toolbar">
+    <div class="brand">DLuz <span>Digital</span> · Material de Apresentação — Cristal Vidros</div>
+    <div class="actions">
+      <a class="btn primary" href="index.html" target="_blank">Abrir Site Demo</a>
+      <button class="btn" type="button" onclick="window.print()">Salvar PDF / Imprimir A4</button>
+      <a class="btn whats" href="https://wa.me/5563984470994" target="_blank" rel="noopener">WhatsApp Cristal Vidros</a>
+    </div>
+  </div>
+
+  <main class="page">
+    <!-- Header -->
+    <header class="doc-header">
+      <div>
+        <div class="eyebrow">Diagnóstico Digital + Exemplos Prontos + Catálogo de Valores</div>
+        <h1>Cristal Vidros — Paraíso do Tocantins</h1>
+        <div style="font-size:12.5px; color:#cbd5e1;">R. Sete de Setembro, Nº 435 - Centro • WhatsApp (63) 98447-0994 • Fixo (63) 3602-3217</div>
+      </div>
+      <div class="meta">
+        <strong>DLuz Digital</strong>
+        Paraíso do Tocantins - TO<br />
+        digital.dluz.com.br<br />
+        Validade da tabela: 15 dias
+      </div>
+    </header>
+
+    <!-- 1. Diagnóstico -->
+    <section class="section">
+      <h2>1. O que encontramos hoje vs. o que precisa ser feito</h2>
+      <p class="sub">Levantamento real feito no Google Maps, buscas no Google e redes sociais em Paraíso do Tocantins.</p>
+
+      <div class="grid-2">
+        <div class="card warn">
+          <span class="badge red">Situação Atual (Pontos perdendo cliente)</span>
+          <h3 style="margin-top:8px">Presença quase zerada para quem pesquisa no celular</h3>
+          <ul class="clean">
+            <li><strong>Sem Site Próprio:</strong> A ficha do Google Maps está com o campo "Adicionar website" vazio.</li>
+            <li><strong>WhatsApp escondido no Maps:</strong> O número <b>(63) 98447-0994</b> aparece na placa da fachada, mas no botão do Google só tem o fixo (63) 3602-3217.</li>
+            <li><strong>Poucas avaliações e dados antigos fora do Google:</strong> Apenas 1 avaliação (de 4 anos atrás), enquanto concorrentes da mesma região já têm 26 a 30 avaliações. Guias antigos na internet ainda mostram endereço e telefone velhos (Av. Vinícius de Morães / 3361-2114).</li>
+            <li><strong>Sem Instagram, Facebook e Tráfego Pago:</strong> Não foram encontrados perfis ativos nem anúncios em Paraíso para captar quem busca box, espelhos, área gourmet e fachadas.</li>
+          </ul>
+        </div>
+
+        <div class="card good">
+          <span class="badge green">Plano de Ação (Oportunidade direta)</span>
+          <h3 style="margin-top:8px">O que precisamos montar para colocar a loja na frente</h3>
+          <ul class="clean">
+            <li><strong>Site Exclusivo com Simulador:</strong> Nenhum concorrente direto em Paraíso tem site moderno (Forte Vidros manda para o Instagram e Vimaco usa Blogspot antigo). O site já envia o orçamento com medidas direto no WhatsApp.</li>
+            <li><strong>Arrumar o Google Meu Negócio:</strong> Colocar o site, destacar o WhatsApp, limpar dados desatualizados, subir fotos reais dos serviços e postar 4x/mês.</li>
+            <li><strong>Criar &amp; Estruturar Instagram + Facebook:</strong> Identidade com a logo oficial da fachada, carrosséis e artes mostrando os trabalhos reais já entregues.</li>
+            <li><strong>Anúncios Locais em Paraíso:</strong> Rodar anúncios na cidade (~40 mil pessoas na internet) levando clientes direto para pedir orçamento no WhatsApp 98447-0994.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- 2. Exemplos Prontos -->
+    <section class="section">
+      <h2>2. Exemplos já prontos usando as fotos e logo reais da loja</h2>
+      <p class="sub">Não são imagens genéricas: usamos a logo real da esquina da Rua Sete de Setembro e fotos reais de serviços da Cristal Vidros.</p>
+
+      <div class="grid-3">
+        <div class="sample-box">
+          <img src="assets/vitrine_comercial.jpg" alt="Site demonstrativo Cristal Vidros" />
+          <div class="cap">
+            <span class="badge blue">Exemplo 1 · Site</span>
+            <h3 style="margin:6px 0 4px">Site + Simulador de Medidas</h3>
+            <p style="margin:0; color:#475569;">Página pronta com fotos reais das obras, mapa e simulador que calcula m² e envia direto no WhatsApp (63) 98447-0994.</p>
+            <p style="margin:8px 0 0;"><a href="index.html" target="_blank" style="color:#0284c7; font-weight:700; text-decoration:none;">Visualizar Site Ao Vivo →</a></p>
+          </div>
+        </div>
+
+        <div class="sample-box">
+          <img src="assets/arte_feed_exemplo.jpg" alt="Exemplo arte Instagram Feed Cristal Vidros" />
+          <div class="cap">
+            <span class="badge blue">Exemplo 2 · Feed Instagram</span>
+            <h3 style="margin:6px 0 4px">Post Comercial de Vitrine</h3>
+            <p style="margin:0; color:#475569;">Arte pronta para o feed com o logo azul/prata oficial da loja, serviço em vidro temperado real e endereço/WhatsApp.</p>
+          </div>
+        </div>
+
+        <div class="sample-box">
+          <img src="assets/arte_stories_exemplo.jpg" alt="Exemplo arte Instagram Stories Cristal Vidros" />
+          <div class="cap">
+            <span class="badge blue">Exemplo 3 · Stories / Anúncio</span>
+            <h3 style="margin:6px 0 4px">Criativo de Área Gourmet</h3>
+            <p style="margin:0; color:#475569;">Formato vertical 9:16 pronto para Stories e anúncios patrocinados em Paraíso com foco em orçamento de área gourmet.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="script-box" style="margin-top:14px;">
+        <strong>Exemplo 4 · Ideia pronta de Vídeo Curto (Reels de 25s sem precisar aparecer se não quiser):</strong><br />
+        • <b>0–3s (Gancho visual):</b> Foto/vídeo da Área Gourmet ou Fachada TopFama + texto grande: <i>"Olha a diferença desse fechamento em vidro temperado em Paraíso."</i><br />
+        • <b>3–18s (Prova rápida):</b> Cortes de 2 segundos mostrando Fachada comercial → Área Gourmet → Balcão modulado → Espelho instalado → Porta escura de pia.<br />
+        • <b>18–25s (Chamada WhatsApp):</b> Fachada da Cristal Vidros na Sete de Setembro + texto: <i>"Fazemos medição no local. Chama no WhatsApp (63) 98447-0994!"</i>
+      </div>
+    </section>
+
+    <!-- 3. Pacotes Principais -->
+    <section class="section">
+      <h2>3. Opções de Pacotes — Quanto custa para começar e por mês</h2>
+      <p class="sub">Valores oficiais da tabela DLuz Digital para Paraíso do Tocantins. Já mostramos o <b>1º pagamento</b>, o valor <b>todo mês</b> e a economia do pacote.</p>
+
+      <div class="grid-2">
+        <!-- Opção A: Só Site -->
+        <article class="pkg-card">
+          <div>
+            <span class="badge blue">Opção 1 · Porta de Entrada</span>
+            <h3 style="margin:6px 0 2px; font-size:16px">Site Profissional no Ar</h3>
+            <p style="margin:0; font-size:12px; color:#475569;">Criação completa do site com simulador, domínio próprio `.com.br`, servidor e manutenção.</p>
+            <div class="price-boxes">
+              <div class="pbox hi"><span>Para começar (1º mês)</span><b>R$ 1.355</b></div>
+              <div class="pbox"><span>Depois, todo mês</span><b>R$ 210/mês</b></div>
+            </div>
+            <ul class="clean">
+              <li><b>Pagamento único:</b> Criação do site (R$ 1.080)</li>
+              <li><b>Anual:</b> Domínio próprio (R$ 65/ano)</li>
+              <li><b>Mensalidade:</b> Manutenção (R$ 150) + Servidor (R$ 60)</li>
+              <li><i>Alternativa sem manutenção mensal: R$ 1.205 no 1º mês (site + domínio + servidor) e R$ 60/mês de servidor.</i></li>
+            </ul>
+          </div>
+        </article>
+
+        <!-- Opção B: Essencial -->
+        <article class="pkg-card">
+          <div>
+            <span class="badge blue">Opção 2 · Essencial (Sem Anúncios)</span>
+            <h3 style="margin:6px 0 2px; font-size:16px">Google + Instagram + Facebook</h3>
+            <p style="margin:0; font-size:12px; color:#475569;">Estruturar tudo do zero e manter o perfil ativo toda semana.</p>
+            <div class="price-boxes">
+              <div class="pbox hi"><span>1º mês (à vista na impl.)</span><b>R$ 1.593</b></div>
+              <div class="pbox"><span>Depois, todo mês</span><b>R$ 693/mês</b></div>
+            </div>
+            <div class="save-tag">Economia do pacote: −R$ 300 na implantação (25% off) e −R$ 147/mês (17,5% off)</div>
+            <ul class="clean">
+              <li><b>Implantação única:</b> de <s>R$ 1.200</s> por <b>R$ 900</b> <i>(ou 2x de R$ 450 = R$ 1.143 nos 2 primeiros meses)</i></li>
+              <li><b>Todo mês:</b> de <s>R$ 840</s> por <b>R$ 693/mês</b> (8 carrosséis/mês IG+FB + 4 posts Google Meu Negócio + manutenção)</li>
+            </ul>
+          </div>
+        </article>
+
+        <!-- Opção C: Completo (Recomendado) -->
+        <article class="pkg-card featured">
+          <div>
+            <span class="badge green">Opção 3 · Mais Recomendado para Vendas</span>
+            <h3 style="margin:6px 0 2px; font-size:16px">Pacote Completo + Tráfego Pago Local</h3>
+            <p style="margin:0; font-size:12px; color:#475569;">Google, Instagram, Facebook e anúncios rodando em Paraíso mandando cliente no WhatsApp.</p>
+            <div class="price-boxes">
+              <div class="pbox hi"><span>1º mês à DLuz (total)</span><b>R$ 2.180</b></div>
+              <div class="pbox"><span>Depois, todo mês à DLuz</span><b>R$ 1.280/mês</b></div>
+            </div>
+            <div class="save-tag">Economia do pacote: −R$ 300 na implantação e −R$ 210/mês na gestão</div>
+            <ul class="clean">
+              <li><b>Implantação única:</b> de <s>R$ 1.200</s> por <b>R$ 900</b> <i>(em até 2x de R$ 450 = R$ 1.730 nos 2 primeiros meses)</i></li>
+              <li><b>Gestão fixa:</b> de <s>R$ 1.200</s> por <b>R$ 990/mês</b> (IG/FB + Gestão de Tráfego + Google + Manutenção)</li>
+              <li><b>Verba dos anúncios:</b> <b>R$ 290/mês</b> (paga à DLuz junto com a mensalidade; vai inteira para os anúncios — ~6.030 pessoas/mês em Paraíso)</li>
+              <li><i>Site novo opcional junto: + R$ 1.080 (em 2x), + R$ 65/ano domínio e + R$ 60/mês servidor.</i></li>
+            </ul>
+          </div>
+        </article>
+
+        <!-- Opção D: Premium -->
+        <article class="pkg-card">
+          <div>
+            <span class="badge blue">Opção 4 · Premium c/ Captação</span>
+            <h3 style="margin:6px 0 2px; font-size:16px">Completo + Gravação Presencial + 4 Reels</h3>
+            <p style="margin:0; font-size:12px; color:#475569;">Tudo do Completo + vamos 1 dia por mês registrar fotos e 4 Reels profissionais das obras.</p>
+            <div class="price-boxes">
+              <div class="pbox hi"><span>1º mês à DLuz (total)</span><b>R$ 2.527</b></div>
+              <div class="pbox"><span>Depois, todo mês à DLuz</span><b>R$ 1.627/mês</b></div>
+            </div>
+            <div class="save-tag">Economia do pacote: −R$ 300 na implantação e −R$ 283/mês na gestão</div>
+            <ul class="clean">
+              <li><b>Implantação única:</b> de <s>R$ 1.200</s> por <b>R$ 900</b> <i>(em até 2x de R$ 450)</i></li>
+              <li><b>Gestão fixa:</b> de <s>R$ 1.620</s> por <b>R$ 1.337/mês</b> (inclui dia de captação + 4 Reels editados)</li>
+              <li><b>Verba dos anúncios:</b> <b>R$ 290/mês</b> (paga à DLuz junto com a mensalidade; vai inteira para os anúncios)</li>
+            </ul>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- 4. Catálogo Avulso -->
+    <section class="section">
+      <h2>4. Catálogo de Valores Avulsos (Para montar do seu jeito)</h2>
+      <p class="sub">Tabela padrão DLuz Digital (Paraíso do Tocantins — faixa até 60 mil habitantes). Você pode escolher itens individuais ou fechar pacote com desconto.</p>
+
+      <div class="grid-2">
+        <div>
+          <table>
+            <thead>
+              <tr><th colspan="2">Pagamento único (paga uma vez no início)</th></tr>
+            </thead>
+            <tbody>
+              <tr><td>Criação de site <small>Vitrine/landing, simulador, WhatsApp, mapa</small></td><td class="num">R$ 1.080</td></tr>
+              <tr><td>Otimização do Google Meu Negócio <small>Fotos, descrição, horários, botão de site</small></td><td class="num">R$ 240</td></tr>
+              <tr><td>Padronização de dados + nova bio <small>Telefone/endereço iguais, link na bio</small></td><td class="num">R$ 150</td></tr>
+              <tr><td>Facebook + Meta Business + Pixel <small>Página ligada ao Instagram, Pixel no site</small></td><td class="num">R$ 270</td></tr>
+              <tr><td>Identidade das redes <small>Modelos de carrossel e capas de destaque</small></td><td class="num">R$ 300</td></tr>
+              <tr><td>Setup de tráfego pago <small>Conta, públicos locais e campanhas iniciais</small></td><td class="num">R$ 240</td></tr>
+              <tr><td>Blog no site <small>Estrutura do blog e SEO básico</small></td><td class="num">R$ 300</td></tr>
+              <tr><td>Loja virtual no site (e-commerce) <small>Carrinho, pagamento online e frete</small></td><td class="num">R$ 900</td></tr>
+              <tr><td>Cadastro de produtos (pacote de 20) <small>Foto, descrição, preço e variações</small></td><td class="num">R$ 120</td></tr>
+              <tr><td>Domínio próprio (anual) <small>Registro e renovação do endereço (.com.br)</small></td><td class="num">R$ 65/ano</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div>
+          <table>
+            <thead>
+              <tr><th colspan="2">Mensalidade fixa &amp; Extras</th></tr>
+            </thead>
+            <tbody>
+              <tr><td>Gestão de Instagram + Facebook <small>8 carrosséis/mês (2/sem.), legendas, stories</small></td><td class="num">R$ 540/mês</td></tr>
+              <tr><td>Gestão de tráfego pago <small>Campanhas, criativos, otimização, relatório (Ritmo forte: R$ 420)</small></td><td class="num">R$ 360/mês</td></tr>
+              <tr><td>Gestão do Google Meu Negócio <small>4 posts/mês, fotos, respostas de avaliação</small></td><td class="num">R$ 150/mês</td></tr>
+              <tr><td>Manutenção do site <small>Atualizações, banners, correções e segurança</small></td><td class="num">R$ 150/mês</td></tr>
+              <tr><td>Servidor e hospedagem <small>Servidor, SSL, backup e monitoramento</small></td><td class="num">R$ 60/mês</td></tr>
+              <tr><td>Captação fotos/vídeos + 4 Reels <small>1 dia presencial na loja/obra por mês</small></td><td class="num">R$ 420/mês</td></tr>
+              <tr><td>Posts no blog (SEO) <small>4 artigos por mês para aparecer no Google</small></td><td class="num">R$ 240/mês</td></tr>
+              <tr><td>Verba recomendada de anúncios <small>Leve R$ 100 · Recomendado R$ 290 · Forte R$ 580 (vai inteira pros anúncios)</small></td><td class="num">R$ 290/mês</td></tr>
+              <tr><td>Campanha de data especial <small>Oferta, 4 artes extras, roteiro Reels, msgs e anúncios</small></td><td class="num">R$ 390</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <div class="card" style="margin-top:16px;">
+        <h3 style="margin-bottom:6px">Condições Comerciais</h3>
+        <ul class="clean">
+          <li>Contrato mínimo de <b>6 meses</b> para pacotes mensais recorrentes (serviços avulsos únicos como Criação de Site não exigem mensalidade de gestão social se não contratada).</li>
+          <li>Mensalidade com vencimento até o <b>dia 10 de cada mês</b>.</li>
+          <li>Pagamento único (implantação / criação de site) parcelado em até <b>2x</b> junto com as 2 primeiras mensalidades.</li>
+          <li>A verba de anúncios é paga à DLuz junto com a mensalidade e usada <b>100% na veiculação dos anúncios</b> no Facebook e Instagram.</li>
+          <li>Proposta e valores válidos por <b>15 dias</b>.</li>
+        </ul>
+      </div>
+    </section>
+
+    <footer class="doc-footer">
+      <span><strong>DLuz Digital</strong> · Paraíso do Tocantins - TO · digital.dluz.com.br</span>
+      <span>Proposta demonstrativa preparada para <strong>Cristal Vidros</strong></span>
+    </footer>
+  </main>
+
+</body>
+</html>

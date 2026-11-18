@@ -1,0 +1,723 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Cristal Vidros | Vidraçaria em Paraíso do Tocantins — Box, Fachadas e Espelhos</title>
+  <meta name="description" content="Cristal Vidros em Paraíso do Tocantins - TO. Vidro temperado sob medida, box para banheiro, fachadas comerciais, fechamento de área gourmet, balcões e espelhos. R. Sete de Setembro, 435 - Centro." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            display: ['"Space Grotesk"', 'sans-serif'],
+            sans: ['Inter', 'sans-serif'],
+          },
+          colors: {
+            obsidian: '#050c17',
+            slateGlass: '#0b1629',
+            ice: '#38bdf8',
+            crystal: '#0ea5e9',
+            royal: '#1d4ed8',
+            silver: '#e2e8f0',
+            fachada: '#7c2d26',
+          }
+        }
+      }
+    };
+  </script>
+  <style>
+    :root {
+      --bg: #050c17;
+      --surface: rgba(13, 25, 46, 0.62);
+      --border-glass: rgba(186, 230, 253, 0.22);
+      --ice: #38bdf8;
+    }
+
+    body {
+      background-color: var(--bg);
+      color: #f1f5f9;
+      font-family: 'Inter', sans-serif;
+      overflow-x: hidden;
+    }
+
+    /* Ambient architectural glass refractions */
+    .glass-backdrop {
+      background-image:
+        radial-gradient(ellipse 70% 45% at 15% 10%, rgba(56, 189, 248, 0.14), transparent 65%),
+        radial-gradient(ellipse 55% 40% at 88% 22%, rgba(29, 78, 216, 0.18), transparent 60%),
+        radial-gradient(ellipse 60% 45% at 50% 90%, rgba(14, 165, 233, 0.10), transparent 70%);
+    }
+
+    .architectural-grid {
+      background-size: 64px 64px;
+      background-image:
+        linear-gradient(to right, rgba(148, 163, 184, 0.05) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(148, 163, 184, 0.05) 1px, transparent 1px);
+    }
+
+    /* Specular tempered glass panel */
+    .tempered-panel {
+      background: linear-gradient(145deg, rgba(18, 34, 61, 0.72), rgba(8, 16, 31, 0.85));
+      backdrop-filter: blur(18px);
+      -webkit-backdrop-filter: blur(18px);
+      border: 1px solid rgba(186, 230, 253, 0.18);
+      box-shadow:
+        inset 0 1px 0 0 rgba(255, 255, 255, 0.16),
+        0 24px 48px -18px rgba(2, 6, 23, 0.75);
+      transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1), border-color 0.35s ease, box-shadow 0.35s ease;
+    }
+
+    .tempered-panel:hover {
+      border-color: rgba(56, 189, 248, 0.48);
+      box-shadow:
+        inset 0 1px 0 0 rgba(255, 255, 255, 0.25),
+        0 28px 54px -16px rgba(14, 165, 233, 0.22);
+    }
+
+    /* Subtle glass diagonal reflection sweep */
+    .glass-sheen {
+      position: relative;
+      overflow: hidden;
+    }
+    .glass-sheen::after {
+      content: "";
+      position: absolute;
+      inset: -40% auto -40% -80%;
+      width: 55%;
+      background: linear-gradient(105deg, transparent 20%, rgba(255, 255, 255, 0.12) 50%, transparent 80%);
+      transform: skewX(-18deg);
+      transition: left 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+      pointer-events: none;
+    }
+    .glass-sheen:hover::after {
+      left: 135%;
+    }
+
+    /* Reveal animation — GPU only, subtle 18px travel */
+    .reveal {
+      opacity: 0;
+      transform: translateY(18px);
+      transition: opacity 0.65s cubic-bezier(0.22, 1, 0.36, 1), transform 0.65s cubic-bezier(0.22, 1, 0.36, 1);
+    }
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* Custom color chips for glass finish */
+    .glass-chip.active {
+      border-color: #38bdf8;
+      background: rgba(56, 189, 248, 0.16);
+      box-shadow: 0 0 0 1px rgba(56, 189, 248, 0.5);
+    }
+
+    /* Interactive service tab active */
+    .srv-btn.active {
+      background: linear-gradient(135deg, rgba(56, 189, 248, 0.22), rgba(29, 78, 216, 0.26));
+      border-color: rgba(56, 189, 248, 0.7);
+      color: #ffffff;
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .reveal { opacity: 1; transform: none; transition: none; }
+      .glass-sheen::after { display: none; }
+    }
+  </style>
+</head>
+<body class="glass-backdrop min-h-screen antialiased selection:bg-sky-500/30 selection:text-white">
+
+  <!-- Top Utility Bar -->
+  <div class="border-b border-sky-200/10 bg-[#040912]/90 text-xs text-slate-300">
+    <div class="mx-auto flex max-w-7xl flex-wrap items-center justify-between gap-2 px-4 py-2 sm:px-6">
+      <div class="flex flex-wrap items-center gap-x-4 gap-y-1">
+        <span class="inline-flex items-center gap-1.5 text-sky-300 font-medium">
+          <span class="h-1.5 w-1.5 rounded-full bg-emerald-400"></span>
+          Atendimento em Paraíso do Tocantins e Região
+        </span>
+        <span class="hidden sm:inline text-slate-500">•</span>
+        <span class="text-slate-300">R. Sete de Setembro, Nº 435 — Centro</span>
+      </div>
+      <div class="flex items-center gap-4">
+        <a href="tel:+556336023217" class="hover:text-sky-300 transition">Fixo: (63) 3602-3217</a>
+        <a href="https://wa.me/5563984470994?text=Ol%C3%A1!%20Vi%20o%20site%20da%20Cristal%20Vidros%20e%20gostaria%20de%20um%20or%C3%A7amento." target="_blank" rel="noopener" class="font-semibold text-emerald-400 hover:text-emerald-300 transition">
+          WhatsApp: (63) 98447-0994
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Navbar -->
+  <header class="sticky top-0 z-40 border-b border-sky-200/15 bg-[#050c17]/80 backdrop-blur-xl">
+    <div class="mx-auto flex max-w-7xl items-center justify-between px-4 py-3.5 sm:px-6">
+      <!-- Brand Emblem matching real storefront facade -->
+      <a href="#inicio" class="flex items-center gap-3 group">
+        <div class="relative flex h-11 w-11 items-center justify-center rounded-xl bg-gradient-to-br from-[#0f2447] to-[#081224] border border-sky-300/30 shadow-lg shadow-sky-900/30">
+          <svg viewBox="0 0 48 48" class="h-8 w-8" fill="none" aria-hidden="true">
+            <defs>
+              <linearGradient id="cRing" x1="6" y1="6" x2="42" y2="42" gradientUnits="userSpaceOnUse">
+                <stop offset="0%" stop-color="#60a5fa" />
+                <stop offset="55%" stop-color="#2563eb" />
+                <stop offset="100%" stop-color="#93c5fd" />
+              </linearGradient>
+              <linearGradient id="vSilver" x1="14" y1="10" x2="36" y2="34" gradientUnits="userSpaceOnUse">
+                <stop offset="0%" stop-color="#ffffff" />
+                <stop offset="100%" stop-color="#cbd5e1" />
+              </linearGradient>
+            </defs>
+            <path d="M36 13.5A15.5 15.5 0 1 0 36 34.5" stroke="url(#cRing)" stroke-width="5.2" stroke-linecap="round" />
+            <path d="M15.5 13.5L23.5 32.5L38 11.5L31.5 11.5L24.5 23.2L20.5 13.5Z" fill="url(#vSilver)" />
+          </svg>
+        </div>
+        <div class="leading-none">
+          <div class="font-display text-lg sm:text-xl font-bold tracking-wider text-white group-hover:text-sky-300 transition">
+            CRISTAL <span class="font-medium text-sky-400">VIDROS</span>
+          </div>
+          <div class="text-[11px] font-medium tracking-wide text-slate-400">Compromisso e Qualidade!</div>
+        </div>
+      </a>
+
+      <nav class="hidden md:flex items-center gap-7 text-sm font-medium text-slate-300">
+        <a href="#servicos" class="hover:text-white transition">Serviços</a>
+        <a href="#obras" class="hover:text-white transition">Obras Reais</a>
+        <a href="#simulador" class="text-sky-300 hover:text-sky-200 transition">Simulador de Orçamento</a>
+        <a href="#localizacao" class="hover:text-white transition">Onde Estamos</a>
+      </nav>
+
+      <div class="flex items-center gap-2.5">
+        <a href="#simulador" class="hidden sm:inline-flex items-center gap-1.5 rounded-xl border border-sky-300/25 bg-sky-500/10 px-3.5 py-2 text-xs font-semibold text-sky-200 hover:bg-sky-500/20 transition">
+          Orçar Medida
+        </a>
+        <a href="https://wa.me/5563984470994?text=Ol%C3%A1!%20Gostaria%20de%20solicitar%20um%20or%C3%A7amento%20com%20a%20Cristal%20Vidros." target="_blank" rel="noopener" class="inline-flex items-center gap-2 rounded-xl bg-emerald-500 px-4 py-2 text-xs sm:text-sm font-semibold text-slate-950 shadow-lg shadow-emerald-500/20 hover:bg-emerald-400 transition">
+          <svg class="h-4 w-4" fill="currentColor" viewBox="0 0 24 24"><path d="M12.031 2c-5.516 0-9.969 4.453-9.969 9.969 0 1.766.469 3.484 1.344 5l-1.406 5.156 5.281-1.375c1.469.797 3.109 1.219 4.75 1.219 5.516 0 9.969-4.453 9.969-9.969S17.547 2 12.031 2zm5.813 14.125c-.25.703-1.438 1.344-2 1.422-.516.078-1.172.109-1.906-.125-.453-.141-1.031-.328-1.781-.656-3.109-1.344-5.141-4.5-5.297-4.703-.156-.203-1.266-1.688-1.266-3.219s.797-2.281 1.078-2.594c.281-.313.609-.391.813-.391.203 0 .406 0 .578.016.188.016.438-.078.688.516.25.609.859 2.094.938 2.25.078.156.125.344.031.547-.094.203-.156.328-.313.5-.156.172-.328.391-.469.516-.156.156-.313.328-.141.625.172.297.766 1.266 1.656 2.047 1.141 1.016 2.094 1.328 2.391 1.484.297.156.469.125.641-.078.172-.203.75-.875.953-1.172.203-.297.406-.25.672-.141.266.109 1.719.813 2.016.953.297.141.484.219.563.344.078.125.078.719-.172 1.422z"/></svg>
+          WhatsApp
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section id="inicio" class="architectural-grid relative overflow-hidden pt-10 pb-16 sm:pt-16 sm:pb-24">
+    <div class="mx-auto grid max-w-7xl items-center gap-10 px-4 sm:px-6 lg:grid-cols-12 lg:gap-12">
+
+      <!-- Left Copy -->
+      <div class="lg:col-span-6 space-y-6">
+        <div class="inline-flex items-center gap-2 rounded-full border border-sky-400/25 bg-sky-500/10 px-3.5 py-1.5 text-xs font-medium text-sky-300">
+          <span class="h-2 w-2 rounded-full bg-sky-400 animate-pulse"></span>
+          Vidraçaria no Centro de Paraíso do Tocantins
+        </div>
+
+        <h1 class="font-display text-3xl sm:text-5xl lg:text-[3.25rem] font-bold leading-[1.08] tracking-tight text-white">
+          Vidro temperado sob medida com <span class="bg-gradient-to-r from-sky-300 via-cyan-200 to-blue-400 bg-clip-text text-transparent">acabamento fino</span> e segurança.
+        </h1>
+
+        <p class="max-w-xl text-base sm:text-lg leading-relaxed text-slate-300">
+          Box para banheiro, fechamento completo de áreas gourmet, fachadas comerciais, espelhos e balcões modulados. Medição no local em Paraíso e instalação com garantia de quem entende do assunto.
+        </p>
+
+        <div class="flex flex-col sm:flex-row gap-3 pt-1">
+          <a href="#simulador" class="glass-sheen inline-flex items-center justify-center gap-2 rounded-xl bg-gradient-to-r from-sky-500 to-blue-600 px-6 py-3.5 text-sm font-semibold text-white shadow-xl shadow-sky-500/25 hover:from-sky-400 hover:to-blue-500 transition">
+            Simular Orçamento Online
+            <svg class="h-4 w-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6"/></svg>
+          </a>
+          <a href="https://wa.me/5563984470994?text=Ol%C3%A1!%20Preciso%20de%20um%20or%C3%A7amento%20de%20vidros%20em%20Para%C3%ADso." target="_blank" rel="noopener" class="inline-flex items-center justify-center gap-2 rounded-xl border border-slate-600/80 bg-slate-900/70 px-6 py-3.5 text-sm font-semibold text-slate-100 hover:border-emerald-400/60 hover:bg-slate-800/80 transition">
+            Agendar Medição no WhatsApp
+          </a>
+        </div>
+
+        <!-- Real Local Proof Strip -->
+        <div class="grid grid-cols-3 gap-3 pt-3 border-t border-slate-800/90">
+          <div>
+            <div class="font-display text-lg sm:text-xl font-bold text-white">5,0 ★</div>
+            <div class="text-xs text-slate-400">Nota no Google Maps</div>
+          </div>
+          <div>
+            <div class="font-display text-lg sm:text-xl font-bold text-sky-300">8mm / 10mm</div>
+            <div class="text-xs text-slate-400">Vidro Temperado Real</div>
+          </div>
+          <div>
+            <div class="font-display text-lg sm:text-xl font-bold text-white">Centro</div>
+            <div class="text-xs text-slate-400">R. Sete de Setembro, 435</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Right Architectural Showcase Composition (Real Photos) -->
+      <div class="lg:col-span-6 relative">
+        <div class="tempered-panel glass-sheen rounded-3xl p-3 sm:p-4">
+          <div class="relative overflow-hidden rounded-2xl aspect-[16/11]">
+            <img src="assets/vitrine_comercial.jpg" alt="Fachada comercial e vitrine em vidro temperado executada pela Cristal Vidros em Paraíso" class="h-full w-full object-cover" />
+            <div class="absolute inset-0 bg-gradient-to-t from-[#050c17]/90 via-transparent to-transparent"></div>
+            <div class="absolute bottom-4 left-4 right-4 flex flex-wrap items-end justify-between gap-2">
+              <div>
+                <span class="inline-block rounded-md bg-sky-500/20 border border-sky-300/30 px-2.5 py-0.5 text-[11px] font-semibold uppercase tracking-wider text-sky-200 backdrop-blur-md">Obra Real Executada</span>
+                <p class="mt-1 font-display text-base sm:text-lg font-semibold text-white">Fachada Comercial &amp; Vitrines em Paraíso</p>
+              </div>
+              <a href="#obras" class="rounded-lg bg-white/10 backdrop-blur-md border border-white/20 px-3 py-1.5 text-xs font-medium text-white hover:bg-white/20 transition">
+                Ver galeria
+              </a>
+            </div>
+          </div>
+
+          <!-- Secondary Dual Strip -->
+          <div class="mt-3 grid grid-cols-2 gap-3">
+            <div class="relative overflow-hidden rounded-xl aspect-[16/10] border border-sky-200/15">
+              <img src="assets/area_gourmet.jpg" alt="Fechamento de área gourmet em vidro temperado Cristal Vidros" class="h-full w-full object-cover" />
+              <div class="absolute inset-0 bg-gradient-to-t from-[#050c17]/85 via-transparent to-transparent"></div>
+              <span class="absolute bottom-2 left-2.5 text-xs font-semibold text-white">Área Gourmet em Vidro</span>
+            </div>
+            <div class="relative overflow-hidden rounded-xl aspect-[16/10] border border-sky-200/15">
+              <img src="assets/fachada.jpg" alt="Loja física da Cristal Vidros na Rua Sete de Setembro 435 Paraíso" class="h-full w-full object-cover" />
+              <div class="absolute inset-0 bg-gradient-to-t from-[#050c17]/85 via-transparent to-transparent"></div>
+              <span class="absolute bottom-2 left-2.5 text-xs font-semibold text-white">Loja Física no Centro</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Services Grid -->
+  <section id="servicos" class="py-16 sm:py-20 border-t border-slate-800/70 bg-[#040a14]/70">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6">
+      <div class="reveal max-w-2xl">
+        <span class="text-xs font-semibold uppercase tracking-[0.18em] text-sky-400">O que fazemos</span>
+        <h2 class="mt-2 font-display text-2xl sm:text-4xl font-bold text-white">Soluções completas em vidro para sua casa ou comércio</h2>
+        <p class="mt-3 text-sm sm:text-base text-slate-400">Cada peça é medida no local para encaixe perfeito, vedação firme e ferragens resistentes.</p>
+      </div>
+
+      <div class="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+        <!-- Card 1 -->
+        <article class="reveal tempered-panel rounded-2xl p-6 flex flex-col justify-between">
+          <div>
+            <div class="mb-4 flex h-11 w-11 items-center justify-center rounded-xl bg-sky-500/15 border border-sky-400/30 text-sky-300">
+              <svg class="h-6 w-6" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4 5a1 1 0 011-1h14a1 1 0 011 1v14a1 1 0 01-1 1H5a1 1 0 01-1-1V5zm8 0v15M4 12h8"/></svg>
+            </div>
+            <h3 class="font-display text-lg font-bold text-white">Fachadas &amp; Vitrines Comerciais</h3>
+            <p class="mt-2 text-sm leading-relaxed text-slate-400">Paredes de vidro, portas de abrir ou correr, fixação estrutural limpa e visibilidade total para destacar sua loja na rua.</p>
+          </div>
+          <a href="#simulador" onclick="selecionarServico('Fachada / Vitrine Comercial')" class="mt-5 inline-flex items-center text-xs font-semibold text-sky-300 hover:text-sky-200">
+            Simular fachada →
+          </a>
+        </article>
+
+        <!-- Card 2 -->
+        <article class="reveal tempered-panel rounded-2xl p-6 flex flex-col justify-between">
+          <div>
+            <div class="mb-4 flex h-11 w-11 items-center justify-center rounded-xl bg-sky-500/15 border border-sky-400/30 text-sky-300">
+              <svg class="h-6 w-6" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M3 10l9-7 9 7v10a1 1 0 01-1 1h-5v-7H9v7H4a1 1 0 01-1-1V10z"/></svg>
+            </div>
+            <h3 class="font-display text-lg font-bold text-white">Fechamento de Área Gourmet</h3>
+            <p class="mt-2 text-sm leading-relaxed text-slate-400">Portas panorâmicas e painéis fixos que protegem do vento, poeira e chuva mantendo a integração com o verde e o quintal.</p>
+          </div>
+          <a href="#simulador" onclick="selecionarServico('Fechamento de Área Gourmet')" class="mt-5 inline-flex items-center text-xs font-semibold text-sky-300 hover:text-sky-200">
+            Simular fechamento →
+          </a>
+        </article>
+
+        <!-- Card 3 -->
+        <article class="reveal tempered-panel rounded-2xl p-6 flex flex-col justify-between">
+          <div>
+            <div class="mb-4 flex h-11 w-11 items-center justify-center rounded-xl bg-sky-500/15 border border-sky-400/30 text-sky-300">
+              <svg class="h-6 w-6" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 4h14v16H5V4zm7 0v16"/></svg>
+            </div>
+            <h3 class="font-display text-lg font-bold text-white">Box para Banheiro</h3>
+            <p class="mt-2 text-sm leading-relaxed text-slate-400">Box reto, de canto ou até o teto em vidro temperado 8mm (incolor, fumê ou verde) com alumínio branco, preto ou brilhante.</p>
+          </div>
+          <a href="#simulador" onclick="selecionarServico('Box para Banheiro')" class="mt-5 inline-flex items-center text-xs font-semibold text-sky-300 hover:text-sky-200">
+            Simular box →
+          </a>
+        </article>
+
+        <!-- Card 4 -->
+        <article class="reveal tempered-panel rounded-2xl p-6 flex flex-col justify-between">
+          <div>
+            <div class="mb-4 flex h-11 w-11 items-center justify-center rounded-xl bg-sky-500/15 border border-sky-400/30 text-sky-300">
+              <svg class="h-6 w-6" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M7 3h10a2 2 0 012 2v14a2 2 0 01-2 2H7a2 2 0 01-2-2V5a2 2 0 012-2zm2 5l6-3m-6 8l6-3"/></svg>
+            </div>
+            <h3 class="font-display text-lg font-bold text-white">Espelhos Sob Medida</h3>
+            <p class="mt-2 text-sm leading-relaxed text-slate-400">Espelhos lapidados ou bisotados para banheiros, quartos, salas e lojas, com corte exato e instalação segura na parede.</p>
+          </div>
+          <a href="#simulador" onclick="selecionarServico('Espelho Sob Medida')" class="mt-5 inline-flex items-center text-xs font-semibold text-sky-300 hover:text-sky-200">
+            Simular espelho →
+          </a>
+        </article>
+
+        <!-- Card 5 -->
+        <article class="reveal tempered-panel rounded-2xl p-6 flex flex-col justify-between">
+          <div>
+            <div class="mb-4 flex h-11 w-11 items-center justify-center rounded-xl bg-sky-500/15 border border-sky-400/30 text-sky-300">
+              <svg class="h-6 w-6" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M3 6h18v12H3V6zm0 4h18m-9-4v12"/></svg>
+            </div>
+            <h3 class="font-display text-lg font-bold text-white">Balcões &amp; Colméias Moduladas</h3>
+            <p class="mt-2 text-sm leading-relaxed text-slate-400">Expositores comerciais, prateleiras e nichos de vidro temperado com conectivos cromados para farmácias, óticas e lojas.</p>
+          </div>
+          <a href="#simulador" onclick="selecionarServico('Balcão / Expositor de Vidro')" class="mt-5 inline-flex items-center text-xs font-semibold text-sky-300 hover:text-sky-200">
+            Simular balcão →
+          </a>
+        </article>
+
+        <!-- Card 6 -->
+        <article class="reveal tempered-panel rounded-2xl p-6 flex flex-col justify-between">
+          <div>
+            <div class="mb-4 flex h-11 w-11 items-center justify-center rounded-xl bg-sky-500/15 border border-sky-400/30 text-sky-300">
+              <svg class="h-6 w-6" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4 7h16v11a1 1 0 01-1 1H5a1 1 0 01-1-1V7zm4 0v12m8-12v12"/></svg>
+            </div>
+            <h3 class="font-display text-lg font-bold text-white">Portas de Pia, Armários &amp; Janelas</h3>
+            <p class="mt-2 text-sm leading-relaxed text-slate-400">Fechamento sob pia em vidro fumê ou preto, portas de correr, janelas blindex e manutenção rápida de fechaduras e roldanas.</p>
+          </div>
+          <a href="#simulador" onclick="selecionarServico('Portas de Pia / Janela em Vidro')" class="mt-5 inline-flex items-center text-xs font-semibold text-sky-300 hover:text-sky-200">
+            Simular medida →
+          </a>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- Interactive Glass Budget Simulator -->
+  <section id="simulador" class="py-16 sm:py-24 relative">
+    <div class="mx-auto max-w-6xl px-4 sm:px-6">
+      <div class="reveal text-center max-w-2xl mx-auto">
+        <span class="text-xs font-semibold uppercase tracking-[0.18em] text-sky-400">Orçamento Sem Complicação</span>
+        <h2 class="mt-2 font-display text-2xl sm:text-4xl font-bold text-white">Monte seu pedido e envie pronto para nosso WhatsApp</h2>
+        <p class="mt-3 text-sm sm:text-base text-slate-400">Escolha o tipo de serviço, a cor do vidro e as medidas aproximadas para agilizar sua cotação e visita técnica.</p>
+      </div>
+
+      <div class="mt-10 tempered-panel rounded-3xl p-5 sm:p-8 lg:p-10 grid gap-8 lg:grid-cols-12">
+        <!-- Left Controls -->
+        <div class="lg:col-span-7 space-y-6">
+          <div>
+            <label class="block text-xs font-semibold uppercase tracking-wider text-slate-300 mb-2.5">1. Qual serviço você precisa?</label>
+            <div class="grid grid-cols-2 sm:grid-cols-3 gap-2.5" id="srv-grid">
+              <button type="button" data-srv="Box para Banheiro" class="srv-btn active rounded-xl border border-slate-700 bg-slate-900/70 px-3 py-2.5 text-left text-xs sm:text-sm font-medium text-slate-200 transition">Box para Banheiro</button>
+              <button type="button" data-srv="Fechamento de Área Gourmet" class="srv-btn rounded-xl border border-slate-700 bg-slate-900/70 px-3 py-2.5 text-left text-xs sm:text-sm font-medium text-slate-200 transition">Área Gourmet</button>
+              <button type="button" data-srv="Fachada / Vitrine Comercial" class="srv-btn rounded-xl border border-slate-700 bg-slate-900/70 px-3 py-2.5 text-left text-xs sm:text-sm font-medium text-slate-200 transition">Fachada Comercial</button>
+              <button type="button" data-srv="Espelho Sob Medida" class="srv-btn rounded-xl border border-slate-700 bg-slate-900/70 px-3 py-2.5 text-left text-xs sm:text-sm font-medium text-slate-200 transition">Espelho Sob Medida</button>
+              <button type="button" data-srv="Balcão / Expositor de Vidro" class="srv-btn rounded-xl border border-slate-700 bg-slate-900/70 px-3 py-2.5 text-left text-xs sm:text-sm font-medium text-slate-200 transition">Balcão Modulado</button>
+              <button type="button" data-srv="Portas de Pia / Janela em Vidro" class="srv-btn rounded-xl border border-slate-700 bg-slate-900/70 px-3 py-2.5 text-left text-xs sm:text-sm font-medium text-slate-200 transition">Porta Pia / Janela</button>
+            </div>
+          </div>
+
+          <div>
+            <label class="block text-xs font-semibold uppercase tracking-wider text-slate-300 mb-2.5">2. Cor e acabamento do vidro</label>
+            <div class="grid grid-cols-2 sm:grid-cols-4 gap-2.5" id="cor-grid">
+              <button type="button" data-cor="Incolor Transparente" class="glass-chip active flex items-center gap-2 rounded-xl border border-slate-700 bg-slate-900/70 px-3 py-2.5 text-xs font-medium text-slate-100 transition">
+                <span class="h-4 w-4 rounded-full bg-gradient-to-br from-sky-100 to-cyan-300 border border-white/60 shrink-0"></span>
+                Incolor
+              </button>
+              <button type="button" data-cor="Fumê (Cinza Escuro)" class="glass-chip flex items-center gap-2 rounded-xl border border-slate-700 bg-slate-900/70 px-3 py-2.5 text-xs font-medium text-slate-100 transition">
+                <span class="h-4 w-4 rounded-full bg-gradient-to-br from-slate-500 to-slate-800 border border-white/40 shrink-0"></span>
+                Fumê
+              </button>
+              <button type="button" data-cor="Verde (Esverdeado)" class="glass-chip flex items-center gap-2 rounded-xl border border-slate-700 bg-slate-900/70 px-3 py-2.5 text-xs font-medium text-slate-100 transition">
+                <span class="h-4 w-4 rounded-full bg-gradient-to-br from-emerald-400 to-teal-700 border border-white/40 shrink-0"></span>
+                Verde
+              </button>
+              <button type="button" data-cor="Espelho Prata" class="glass-chip flex items-center gap-2 rounded-xl border border-slate-700 bg-slate-900/70 px-3 py-2.5 text-xs font-medium text-slate-100 transition">
+                <span class="h-4 w-4 rounded-full bg-gradient-to-br from-white via-slate-300 to-slate-500 border border-white/80 shrink-0"></span>
+                Espelho
+              </button>
+            </div>
+          </div>
+
+          <div class="grid grid-cols-2 sm:grid-cols-3 gap-4">
+            <div>
+              <label for="largura" class="block text-xs font-medium text-slate-300 mb-1.5">Largura aprox. (metros)</label>
+              <input id="largura" type="number" step="0.10" min="0.3" max="30" value="1.50" class="w-full rounded-xl border border-slate-700 bg-slate-950/75 px-3.5 py-2.5 text-sm text-white focus:border-sky-400 focus:outline-none" />
+            </div>
+            <div>
+              <label for="altura" class="block text-xs font-medium text-slate-300 mb-1.5">Altura aprox. (metros)</label>
+              <input id="altura" type="number" step="0.10" min="0.3" max="10" value="1.90" class="w-full rounded-xl border border-slate-700 bg-slate-950/75 px-3.5 py-2.5 text-sm text-white focus:border-sky-400 focus:outline-none" />
+            </div>
+            <div class="col-span-2 sm:col-span-1">
+              <label for="alum" class="block text-xs font-medium text-slate-300 mb-1.5">Kit / Perfil</label>
+              <select id="alum" class="w-full rounded-xl border border-slate-700 bg-slate-950/75 px-3 py-2.5 text-sm text-white focus:border-sky-400 focus:outline-none">
+                <option value="Branco">Branco</option>
+                <option value="Preto Fosco">Preto Fosco</option>
+                <option value="Prata / Cromado">Prata / Cromado</option>
+                <option value="A confirmar na visita">A confirmar</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="grid sm:grid-cols-2 gap-4">
+            <div>
+              <label for="nomeCliente" class="block text-xs font-medium text-slate-300 mb-1.5">Seu nome</label>
+              <input id="nomeCliente" type="text" placeholder="Ex: João / Maria" class="w-full rounded-xl border border-slate-700 bg-slate-950/75 px-3.5 py-2.5 text-sm text-white placeholder:text-slate-500 focus:border-sky-400 focus:outline-none" />
+            </div>
+            <div>
+              <label for="bairroCliente" class="block text-xs font-medium text-slate-300 mb-1.5">Bairro / Cidade</label>
+              <input id="bairroCliente" type="text" placeholder="Ex: Centro, Paraíso - TO" value="Paraíso do Tocantins" class="w-full rounded-xl border border-slate-700 bg-slate-950/75 px-3.5 py-2.5 text-sm text-white placeholder:text-slate-500 focus:border-sky-400 focus:outline-none" />
+            </div>
+          </div>
+        </div>
+
+        <!-- Right Live Spec Card -->
+        <div class="lg:col-span-5 rounded-2xl border border-sky-300/20 bg-slate-950/70 p-6 flex flex-col justify-between">
+          <div>
+            <div class="flex items-center justify-between border-b border-slate-800 pb-3">
+              <span class="text-xs font-semibold uppercase tracking-wider text-sky-300">Resumo do Seu Pedido</span>
+              <span id="areaBadge" class="rounded-full bg-sky-500/15 px-2.5 py-0.5 text-xs font-semibold text-sky-200">2,85 m²</span>
+            </div>
+
+            <dl class="mt-4 space-y-3 text-sm">
+              <div class="flex justify-between gap-2">
+                <dt class="text-slate-400">Serviço</dt>
+                <dd id="sum-srv" class="font-semibold text-white text-right">Box para Banheiro</dd>
+              </div>
+              <div class="flex justify-between gap-2">
+                <dt class="text-slate-400">Vidro</dt>
+                <dd id="sum-cor" class="font-medium text-slate-200 text-right">Incolor Transparente</dd>
+              </div>
+              <div class="flex justify-between gap-2">
+                <dt class="text-slate-400">Medidas aprox.</dt>
+                <dd id="sum-med" class="font-medium text-slate-200 text-right">1,50m × 1,90m (2,85 m²)</dd>
+              </div>
+              <div class="flex justify-between gap-2">
+                <dt class="text-slate-400">Acabamento</dt>
+                <dd id="sum-alum" class="font-medium text-slate-200 text-right">Branco</dd>
+              </div>
+              <div class="flex justify-between gap-2">
+                <dt class="text-slate-400">Local</dt>
+                <dd id="sum-local" class="font-medium text-slate-200 text-right">Paraíso do Tocantins</dd>
+              </div>
+            </dl>
+
+            <div class="mt-5 rounded-xl bg-sky-950/50 border border-sky-400/20 p-3.5 text-xs leading-relaxed text-sky-100">
+              Não sabe a medida exata? Sem problema — envie uma estimativa e nossa equipe faz a medição precisa no local.
+            </div>
+          </div>
+
+          <div class="mt-6 space-y-2.5">
+            <a id="btnWhatsSim" href="#" target="_blank" rel="noopener" class="glass-sheen flex w-full items-center justify-center gap-2 rounded-xl bg-emerald-500 px-5 py-3.5 text-sm font-bold text-slate-950 shadow-lg shadow-emerald-500/25 hover:bg-emerald-400 transition">
+              Enviar Orçamento no WhatsApp
+            </a>
+            <p class="text-center text-[11px] text-slate-400">Atendimento direto: (63) 98447-0994 • Sem compromisso</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Real Portfolio Gallery -->
+  <section id="obras" class="py-16 sm:py-20 border-t border-slate-800/70 bg-[#040a14]/70">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6">
+      <div class="reveal flex flex-col sm:flex-row sm:items-end justify-between gap-4">
+        <div>
+          <span class="text-xs font-semibold uppercase tracking-[0.18em] text-sky-400">Portfólio Real Cristal Vidros</span>
+          <h2 class="mt-2 font-display text-2xl sm:text-4xl font-bold text-white">Serviços reais entregues em Paraíso</h2>
+        </div>
+        <a href="https://wa.me/5563984470994?text=Ol%C3%A1!%20Vi%20as%20fotos%20das%20obras%20da%20Cristal%20Vidros%20e%20quero%20um%20or%C3%A7amento." target="_blank" rel="noopener" class="text-sm font-semibold text-sky-300 hover:text-sky-200 transition">
+          Pedir orçamento parecido →
+        </a>
+      </div>
+
+      <div class="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+        <figure class="reveal tempered-panel overflow-hidden rounded-2xl">
+          <div class="aspect-[4/3] overflow-hidden">
+            <img src="assets/vitrine_comercial.jpg" alt="Fachada comercial em vidro temperado na loja TopFama" class="h-full w-full object-cover transition duration-500 hover:scale-105" />
+          </div>
+          <figcaption class="p-4">
+            <h3 class="font-display font-semibold text-white">Fachada Comercial Completa</h3>
+            <p class="mt-1 text-xs text-slate-400">Vidro temperado estruturado de ponta a ponta com porta central para comércio local.</p>
+          </figcaption>
+        </figure>
+
+        <figure class="reveal tempered-panel overflow-hidden rounded-2xl">
+          <div class="aspect-[4/3] overflow-hidden">
+            <img src="assets/area_gourmet.jpg" alt="Fechamento em vidro temperado para área gourmet e lazer" class="h-full w-full object-cover transition duration-500 hover:scale-105" />
+          </div>
+          <figcaption class="p-4">
+            <h3 class="font-display font-semibold text-white">Fechamento de Área Gourmet</h3>
+            <p class="mt-1 text-xs text-slate-400">Instalação sob medida acompanhando o recorte do telhado com portas deslizantes.</p>
+          </figcaption>
+        </figure>
+
+        <figure class="reveal tempered-panel overflow-hidden rounded-2xl">
+          <div class="aspect-[4/3] overflow-hidden">
+            <img src="assets/balcao_vidro_2.jpg" alt="Balcão expositor modulado de vidro temperado" class="h-full w-full object-cover transition duration-500 hover:scale-105" />
+          </div>
+          <figcaption class="p-4">
+            <h3 class="font-display font-semibold text-white">Balcão Expositor Modulado</h3>
+            <p class="mt-1 text-xs text-slate-400">Nichos e prateleiras sob medida em vidro temperado com conectivos de alta resistência.</p>
+          </figcaption>
+        </figure>
+
+        <figure class="reveal tempered-panel overflow-hidden rounded-2xl">
+          <div class="aspect-[4/3] overflow-hidden">
+            <img src="assets/espelho_banheiro.jpg" alt="Espelho instalado em banheiro residencial" class="h-full w-full object-cover transition duration-500 hover:scale-105" />
+          </div>
+          <figcaption class="p-4">
+            <h3 class="font-display font-semibold text-white">Espelhos Sob Medida</h3>
+            <p class="mt-1 text-xs text-slate-400">Corte preciso e instalação limpa para banheiros, lavabos e ambientes internos.</p>
+          </figcaption>
+        </figure>
+
+        <figure class="reveal tempered-panel overflow-hidden rounded-2xl">
+          <div class="aspect-[4/3] overflow-hidden">
+            <img src="assets/armario_pia.jpg" alt="Portas de armário de pia em vidro temperado escuro" class="h-full w-full object-cover transition duration-500 hover:scale-105" />
+          </div>
+          <figcaption class="p-4">
+            <h3 class="font-display font-semibold text-white">Fechamento de Pia em Vidro Escuro</h3>
+            <p class="mt-1 text-xs text-slate-400">Portas deslizantes sob bancada de granito — durabilidade contra umidade e fácil limpeza.</p>
+          </figcaption>
+        </figure>
+
+        <figure class="reveal tempered-panel overflow-hidden rounded-2xl">
+          <div class="aspect-[4/3] overflow-hidden">
+            <img src="assets/fachada.jpg" alt="Fachada física da Cristal Vidros na Rua Sete de Setembro 435" class="h-full w-full object-cover transition duration-500 hover:scale-105" />
+          </div>
+          <figcaption class="p-4">
+            <h3 class="font-display font-semibold text-white">Loja Física no Centro</h3>
+            <p class="mt-1 text-xs text-slate-400">R. Sete de Setembro, Nº 435 — venha conhecer nossos modelos e tirar dúvidas pessoalmente.</p>
+          </figcaption>
+        </figure>
+      </div>
+    </div>
+  </section>
+
+  <!-- Location & Contact -->
+  <section id="localizacao" class="py-16 sm:py-20">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 grid gap-8 lg:grid-cols-12 items-center">
+      <div class="lg:col-span-5 space-y-5 reveal">
+        <span class="text-xs font-semibold uppercase tracking-[0.18em] text-sky-400">Visite ou chame</span>
+        <h2 class="font-display text-2xl sm:text-3xl font-bold text-white">Cristal Vidros — Centro de Paraíso do Tocantins</h2>
+        <p class="text-sm sm:text-base text-slate-300 leading-relaxed">
+          Fácil acesso na esquina da Rua Sete de Setembro. Atendimento rápido por telefone fixo ou WhatsApp para orçamentos residenciais e comerciais.
+        </p>
+
+        <div class="space-y-3 text-sm">
+          <div class="tempered-panel rounded-xl p-4">
+            <div class="text-xs text-slate-400">Endereço</div>
+            <div class="font-semibold text-white mt-0.5">R. Sete de Setembro, Nº 435 — Centro, Paraíso do Tocantins - TO, 77600-000</div>
+          </div>
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+            <a href="https://wa.me/5563984470994?text=Ol%C3%A1!%20Gostaria%20de%20um%20or%C3%A7amento%20da%20Cristal%20Vidros." target="_blank" rel="noopener" class="tempered-panel rounded-xl p-4 hover:border-emerald-400/50 transition">
+              <div class="text-xs text-emerald-400 font-semibold">WhatsApp Orçamentos</div>
+              <div class="font-display text-base font-bold text-white mt-0.5">(63) 98447-0994</div>
+            </a>
+            <a href="tel:+556336023217" class="tempered-panel rounded-xl p-4 hover:border-sky-400/50 transition">
+              <div class="text-xs text-sky-400 font-semibold">Telefone da Loja</div>
+              <div class="font-display text-base font-bold text-white mt-0.5">(63) 3602-3217</div>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <div class="lg:col-span-7 reveal">
+        <div class="tempered-panel overflow-hidden rounded-3xl p-2">
+          <iframe
+            title="Mapa da Cristal Vidros em Paraíso do Tocantins"
+            src="https://maps.google.com/maps?q=Cristal+Vidros+Rua+Sete+de+Setembro+435+Paraiso+do+Tocantins&output=embed"
+            class="h-72 sm:h-96 w-full rounded-2xl border-0"
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade">
+          </iframe>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="border-t border-slate-800/80 bg-[#03070f] py-8 text-xs text-slate-400">
+    <div class="mx-auto flex max-w-7xl flex-col sm:flex-row items-center justify-between gap-4 px-4 sm:px-6">
+      <div>
+        <strong class="text-slate-200">Cristal Vidros</strong> • Compromisso e Qualidade! • Paraíso do Tocantins - TO
+      </div>
+      <div class="text-slate-500">
+        Modelo demonstrativo desenvolvido por <a href="https://digital.dluz.com.br" target="_blank" rel="noopener" class="text-sky-400 hover:underline">DLuz Digital</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Floating Mobile WhatsApp -->
+  <a href="https://wa.me/5563984470994?text=Ol%C3%A1!%20Quero%20fazer%20um%20or%C3%A7amento%20com%20a%20Cristal%20Vidros." target="_blank" rel="noopener" aria-label="Chamar no WhatsApp" class="fixed bottom-4 right-4 z-50 flex items-center gap-2 rounded-full bg-emerald-500 px-4 py-3 text-sm font-bold text-slate-950 shadow-xl shadow-emerald-500/30 hover:bg-emerald-400 transition sm:hidden">
+    WhatsApp
+  </a>
+
+  <script>
+    const state = {
+      srv: 'Box para Banheiro',
+      cor: 'Incolor Transparente',
+    };
+
+    const $ = (s) => document.querySelector(s);
+    const $$ = (s) => document.querySelectorAll(s);
+
+    function selecionarServico(nome) {
+      state.srv = nome;
+      $$('#srv-grid .srv-btn').forEach(btn => {
+        btn.classList.toggle('active', btn.dataset.srv === nome);
+      });
+      atualizarResumo();
+    }
+
+    function atualizarResumo() {
+      const larg = Math.max(0.2, parseFloat($('#largura').value) || 0);
+      const alt = Math.max(0.2, parseFloat($('#altura').value) || 0);
+      const area = (larg * alt);
+      const alum = $('#alum').value;
+      const nome = $('#nomeCliente').value.trim();
+      const local = $('#bairroCliente').value.trim() || 'Paraíso do Tocantins';
+
+      const fmtNum = (n) => n.toFixed(2).replace('.', ',');
+
+      $('#areaBadge').textContent = fmtNum(area) + ' m²';
+      $('#sum-srv').textContent = state.srv;
+      $('#sum-cor').textContent = state.cor;
+      $('#sum-med').textContent = `${fmtNum(larg)}m × ${fmtNum(alt)}m (${fmtNum(area)} m²)`;
+      $('#sum-alum').textContent = alum;
+      $('#sum-local').textContent = local;
+
+      const msg = [
+        `Olá Cristal Vidros!${nome ? ` Aqui é ${nome}.` : ''}`,
+        `Fiz uma simulação pelo site e gostaria de um orçamento:`,
+        `• Serviço: ${state.srv}`,
+        `• Vidro: ${state.cor}`,
+        `• Medidas aproximadas: ${fmtNum(larg)}m x ${fmtNum(alt)}m (${fmtNum(area)} m²)`,
+        `• Kit / Acabamento: ${alum}`,
+        `• Local: ${local}`,
+        ``,
+        `Podemos agendar uma medição ou conversar sobre valores?`
+      ].join('\n');
+
+      $('#btnWhatsSim').href = `https://wa.me/5563984470994?text=${encodeURIComponent(msg)}`;
+    }
+
+    $$('#srv-grid .srv-btn').forEach(btn => {
+      btn.addEventListener('click', () => selecionarServico(btn.dataset.srv));
+    });
+
+    $$('#cor-grid .glass-chip').forEach(btn => {
+      btn.addEventListener('click', () => {
+        state.cor = btn.dataset.cor;
+        $$('#cor-grid .glass-chip').forEach(b => b.classList.toggle('active', b === btn));
+        atualizarResumo();
+      });
+    });
+
+    ['largura', 'altura', 'alum', 'nomeCliente', 'bairroCliente'].forEach(id => {
+      $('#' + id).addEventListener('input', atualizarResumo);
+      $('#' + id).addEventListener('change', atualizarResumo);
+    });
+
+    // Smooth GPU scroll reveal
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.12 });
+
+    $$('.reveal').forEach(el => observer.observe(el));
+    atualizarResumo();
+  </script>
+</body>
+</html>
